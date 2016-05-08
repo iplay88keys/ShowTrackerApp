@@ -7,6 +7,9 @@ var showTracker = angular.module('showTracker', ['ionic', 'ngCordova']);
 
 showTracker.run(function($rootScope, $state, $ionicPlatform) {
     $rootScope.key = "";
+    if(window.localStorage.getItem("key") !== undefined) {
+        $rootScope.key = window.localStorage.getItem("key");
+    }
 
     $ionicPlatform.ready(function() {
         if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -26,7 +29,9 @@ showTracker.run(function($rootScope, $state, $ionicPlatform) {
     });
     
     $rootScope.$on( "$stateChangeStart", function(event, toState, toParams, fromState, fromParams, options) {
-        if ($rootScope.key == "") {
+        console.log("here");
+        console.log($rootScope.key);
+        if ($rootScope.key == undefined || $rootScope.key == "") {
             // There is no key so redirect to /login
             if (toState.name != "login") {
                 event.preventDefault();
@@ -50,4 +55,16 @@ showTracker.config(function($stateProvider, $urlRouterProvider) {
     });
 
     //$urlRouterProvider.otherwise('/watchlist');
+});
+
+showTracker.directive('errSrc', function() {
+  return {
+    link: function(scope, element, attrs) {
+      element.bind('error', function() {
+        if (attrs.src != attrs.errSrc) {
+          attrs.$set('src', attrs.errSrc);
+        }
+      });
+    }
+  }
 });

@@ -4,7 +4,7 @@
     <ion-list>
       <ion-item ng-repeat="series in data.watchlist" class="item item-text-wrap">
         <h3>{{series.name}}</h3>
-        <img ng-src="{{series.banner_thumb}}">
+        <img ng-src="{{series.banner_thumb}}" err-src='holder.js/271x50?text={{series.name}}' >
       </ion-item>
     </ion-list>
   </ion-content>
