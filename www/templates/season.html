@@ -11,13 +11,10 @@
     <ion-list>
       <ion-item class="item item-divider">Episodes</ion-item>
       <ion-item ng-repeat="episode in episodes" class="item item-text-wrap item-icon-right">
-        <ion-item-content>
-          <div class="item-checkbox">
-          </div>
-        </ion-item-content>
-        <ion-item-content>
+        <label class="checkbox">
+          <input type="checkbox" ng-model="checked[episode.id]">
           S{{episode.season_number}}E{{episode.episode_number}} - {{episode.name}}
-        </ion-item-content>
+        </label>
         <i class="icon ion-chevron-right ion-accessory"></i>
       </ion-item>
     </ion-list>
