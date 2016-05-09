@@ -8,9 +8,10 @@
   </ion-header-bar>
   <ion-content class="padding">
     <ion-list>
-      <ion-item ng-repeat="series in data" class="item item-text-wrap" href="#/series/{{series.id}}">
-        <h3>{{series.name}}</h3>
-        <img ng-src="{{series.banner_thumb}}" err-src='holder.js/271x50?text={{series.name}}' >
+      <ion-item ng-repeat="series in data" class="item item-text-wrap item-icon-right" href="#/series/{{series.id}}">
+        {{series.name}}
+        <img ng-src="{{series.banner_thumb}}" err-src='holder.js/271x50?text={{series.name}}' style="width:100%;">
+        <i class="icon ion-chevron-right icon-accessary"></i>
       </ion-item>
     </ion-list>
   </ion-content>
