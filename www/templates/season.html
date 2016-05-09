@@ -12,7 +12,7 @@
       <ion-item class="item item-divider">Episodes</ion-item>
       <ion-item ng-repeat="episode in episodes" class="item item-text-wrap item-icon-right">
         <label class="checkbox">
-          <input type="checkbox" ng-model="checked[episode.id]">
+          <input type="checkbox" ng-model="checked[episode.id]" ng-change="change(episode.id, extras.season_id)">
           S{{episode.season_number}}E{{episode.episode_number}} - {{episode.name}}
         </label>
         <i class="icon ion-chevron-right ion-accessory"></i>

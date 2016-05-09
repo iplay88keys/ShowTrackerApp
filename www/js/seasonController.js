@@ -1,4 +1,4 @@
-showTracker.controller('seasonCtrl', function($scope, $http, $rootScope, $stateParams, $location) {
+showTracker.controller('seasonCtrl', function($scope, $http, $rootScope, $stateParams, $location, $httpParamSerializerJQLike) {
     var auth = "Token token " + $rootScope.key;
     var apiUrl = $rootScope.base + 'series/' + $stateParams.seriesId + '/season/' + $stateParams.seasonId;
     $scope.$location = $location;
@@ -31,4 +31,50 @@ showTracker.controller('seasonCtrl', function($scope, $http, $rootScope, $stateP
         $scope.extras = response.statusText;
         $scope.watches = response.statusText;
     });
+
+    $scope.change = function(id, season) {
+        var apiUrl = $rootScope.base + 'series/' + $stateParams.seriesId + '/episode/' + id;
+        // The checkbox is now checked
+        if($scope.checked[id]) {
+            console.log(auth);
+            $http({
+                method: 'POST',
+                url: apiUrl,
+                transformRequest: function(obj) {
+                    var str = [];
+                    for (var p in obj) {
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    }
+                    return str.join("&");
+                },
+                data: {
+                    season_id: season
+                },
+                headers: {
+                    'Authorization': auth,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+        } else {
+            $http({
+                method: 'DELETE',
+                url: apiUrl,
+                transformRequest: function(obj) {
+                    var str = [];
+                    for (var p in obj) {
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    }
+                    return str.join("&");
+                },
+                data: {
+                    season_id: season
+                },
+                headers: {
+                    'Authorization': auth,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+
+        }
+    };
 }); 
