@@ -6,7 +6,7 @@
   <ion-header-bar class="bar-subheader">
     <h1 class="title">Watchlist</h1>
   </ion-header-bar>
-  <ion-content class="padding">
+  <ion-content class="padding" overflow-scroll="true">
     <ion-list>
       <ion-item ng-repeat="series in data" class="item item-text-wrap item-icon-right" href="#/series/{{series.id}}">
         {{series.name}}
