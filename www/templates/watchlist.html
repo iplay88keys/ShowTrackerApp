@@ -1,8 +1,14 @@
 <ion-view view-title="Watchlist">
+  <ion-header-bar align-title="center" class="bar-positive">
+    <div class="h1 title">Show Tracker</div>
+    <button class="button" menu-toggle"right" ng-click="$location.path('/login')">Settings</button>
+  </ion-header-bar>
+  <ion-header-bar class="bar-subheader">
+    <h1 class="title">Watchlist</h1>
+  </ion-header-bar>
   <ion-content class="padding">
-    Watchlist:
     <ion-list>
-      <ion-item ng-repeat="series in data.watchlist" class="item item-text-wrap">
+      <ion-item ng-repeat="series in data" class="item item-text-wrap" href="#/series/{{series.id}}">
         <h3>{{series.name}}</h3>
         <img ng-src="{{series.banner_thumb}}" err-src='holder.js/271x50?text={{series.name}}' >
       </ion-item>

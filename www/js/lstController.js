@@ -1,13 +1,16 @@
-showTracker.controller('lstCtrl', function($scope, $http, $rootScope) {
+showTracker.controller('lstCtrl', function($scope, $http, $rootScope, $location) {
     var auth = "Token token " + $rootScope.key;
+    var apiUrl = $rootScope.base + 'watchlist';
+    $scope.$location = $location;
+
     $http({
         method: 'GET',
-        url: 'http://show-trac.herokuapp.com/api/watchlist',
+        url: apiUrl,
         headers: {
             'Authorization': auth
         }
     }).then(function success(response) {
-        $scope.data = response.data;
+        $scope.data = response.data.watchlist;
     }, function error(response) {
         $scope.data = response.statusText;
     });

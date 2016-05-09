@@ -6,6 +6,7 @@
 var showTracker = angular.module('showTracker', ['ionic', 'ngCordova']);
 
 showTracker.run(function($rootScope, $state, $ionicPlatform) {
+    $rootScope.base = 'http://show-trac.herokuapp.com/api/';
     $rootScope.key = "";
     if(window.localStorage.getItem("key") !== undefined) {
         $rootScope.key = window.localStorage.getItem("key");
@@ -52,8 +53,12 @@ showTracker.config(function($stateProvider, $urlRouterProvider) {
         url: '/watchlist',
         templateUrl: 'templates/watchlist.html',
         controller: 'lstCtrl'
+    })
+    .state('series', {
+        url: '/series/:seriesId',
+        templateUrl: 'templates/series.html',
+        controller: 'seriesCtrl'
     });
-
     //$urlRouterProvider.otherwise('/watchlist');
 });
 

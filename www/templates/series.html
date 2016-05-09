@@ -1,0 +1,18 @@
+<ion-view view-title="Series">
+  <ion-header-bar align-title="center" class="bar-positive">
+    <button class="button" menu-toggle="left" ng-click="$location.path('/watchlist')">Back</button>
+    <div class="h1 title">Show Tracker</div>
+    <button class="button" menu-toggle="right" ng-click="$location.path('/login')">Settings</button>
+  </ion-header-bar>
+  <ion-header-bar class="bar-subheader">
+    <h1 class="title">{{info.name}}</h1>
+  </ion-header-bar>
+  <ion-content class="padding">
+    Seasons:
+    <ion-list>
+      <ion-item ng-repeat="season in seasons" class="item item-text-wrap">
+        <h3>{{season[0]}}</h3>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
