@@ -58,6 +58,11 @@ showTracker.config(function($stateProvider, $urlRouterProvider) {
         url: '/series/:seriesId',
         templateUrl: 'templates/series.html',
         controller: 'seriesCtrl'
+    })
+    .state('season', {
+        url: '/series/:seriesId/season/:seasonId',
+        templateUrl: 'templates/season.html',
+        controller: 'seasonCtrl'
     });
     //$urlRouterProvider.otherwise('/watchlist');
 });
