@@ -10,7 +10,7 @@ showTracker.controller('lstCtrl', function($scope, $http, $rootScope, $location)
             'Authorization': auth
         }
     }).then(function success(response) {
-        $scope.data = response.data.watchlist;
+        $scope.data = response.data;
     }, function error(response) {
         $scope.data = response.statusText;
     });
