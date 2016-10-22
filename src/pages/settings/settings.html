@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+      <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-list>
+    <form *ngIf="settings" #settingsForm="ngForm" novalidate>
+			<ion-item>
+				<ion-label>Access Token</ion-label>
+				<ion-input [(ngModel)]="settings.token" name="token" type="text" spellcheck="false" autocapitalize="off" required>
+				</ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>URL</ion-label>
+				<ion-input [(ngModel)]="settings.url" name="url" type="text" spellcheck="false" autocapitalize="off" required>
+				</ion-input>
+			</ion-item>
+      <ion-row responsive-sm>
+        <ion-col>
+          <button ion-button (click)="onSettingsChanged(settingsForm)" type="submit" color="primary" block>Save Changes</button>
+        </ion-col>
+      </ion-row>
+    </form>
+	</ion-list>
+</ion-content>
