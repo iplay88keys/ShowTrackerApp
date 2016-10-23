@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-segment [(ngModel)]="segment" (ionChange)="updateWatchlist()">
+      <ion-segment-button value="all">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="favorites">
+        Favorites
+      </ion-segment-button>
+    </ion-segment>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+<!-- Do not display this at the moment
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary"
+                   [(ngModel)]="queryText"
+                   (ionInput)="updateWatchlist()"
+                   placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
+-->
+</ion-header>
+<ion-content>
+  <ion-list [hidden]="length === 0">
+      <button ion-item detail-push *ngFor="let series of data" (click)="goToSeries(series.id)">
+				<p>{{series.name}}</p>
+        <img src="{{series.banner_url}}" style="width:100%;" />
+      </button>
+  </ion-list>
+  <ion-list-header [hidden]="length > 0">
+    <button ion-button *ngIf="missingSettings" (click)="settingsPage()" block>Please update settings</button>
+    <p *ngIf="!missingSettings">No Watchlist Found</p>
+  </ion-list-header>
+</ion-content>

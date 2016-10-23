@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+      <ion-title *ngIf="data">{{data.info.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngIf="data" [hidden]="length === 0">
+    <ion-card-header>
+      <img src="{{data.info.banner_url}}"/>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{data.info.overview}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-list *ngIf="data"[hidden]="length === 0">
+      <button ion-item detail-push *ngFor="let season of data.seasons" (click)="goToSeason(data.info.id, season[1])">
+				<p>{{season[0]}}</p>
+      </button>
+  </ion-list>
+  <ion-list-header [hidden]="length > 0">
+      No Seasons Found
+  </ion-list-header>
+</ion-content>

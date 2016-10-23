@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+      <ion-title *ngIf="data">{{data.info.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list *ngIf="data"[hidden]="length === 0">
+      <ion-item *ngFor="let episode of data.episodes">
+			  <ion-label>S{{episode.season_number}}E{{episode.episode_number}} - {{episode.name}}</ion-label>
+				<ion-checkbox [(ngModel)]="data.checked[episode.id]" (click)="changeWatched(episode.id)"></ion-checkbox>
+      </ion-item>
+  </ion-list>
+  <ion-list-header [hidden]="length > 0">
+      No Episodes Found
+  </ion-list-header>
+</ion-content>
